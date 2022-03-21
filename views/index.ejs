@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHERY CODE</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="../stylesheets/style.css">
+</head>
+<body>
+  <div id="main">
+    <div id="left">
+      <h3>SHERY CODE</h3>
+      <form action="/createfile">
+        <input type="text" name="filename" placeholder="create file">
+        <hr>
+        <div id="files">
+          <% if(files.length > 0){ %>
+
+            <% files.forEach(function(val){ %>
+              <div id="lines">
+                <h3><%= val %></h3> 
+                <span><a href=/open/<%= val %> > <i class="ri-fullscreen-line">  </i></a>
+                  <a href=/delete/<%= val %> > <i class="ri-delete-bin-6-line"></i></a>
+                </span>
+              </div>  
+              <% })%> 
+            <%} else { %> 
+             <h3>No Files Found!</h3> 
+            <% } %>
+            
+            </div>
+          </form>
+
+    </div>
+    <div id="right">
+      <div id="fileHeading">
+        <% if(plc.length>0){ %>
+        <h4><%= plc %> <button ><i class="ri-restart-line"></i></button> </h4> 
+        <%  } %>
+      </div>
+      <div id ="text">
+        <form action="/save/<%= plc %>" method="post" id ="submit">
+          <textarea name="textbox" ><%= data %>  </textarea>
+          <input type="submit" value="button">
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
